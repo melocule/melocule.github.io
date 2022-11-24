@@ -1,0 +1,8 @@
+body {
+    cursor: url('cursor-main.png'), auto;
+    font-family: Quicksand, sans-serif;
+}
+
+a:hover {
+    cursor: url('cursor-pointer.png'), pointer;
+}
