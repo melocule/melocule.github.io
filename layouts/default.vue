@@ -38,20 +38,27 @@ export default {
       )
     })
 
-    gsap.ticker.add((time, deltaTime) => {
-      const delta = deltaTime * fpms
-      const dt = 1.0 - Math.pow(1.0 - speed, delta)
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      gsap.ticker.add((time, deltaTime) => {
+        const delta = deltaTime * fpms
+        const dt = 1.0 - Math.pow(1.0 - speed, delta)
 
-      pos.x += contain((mouse.x - pos.x - distance.x) * dt, -maxSpeed, maxSpeed)
-      pos.y += contain(
-        (mouse.y - pos.y - distance.y) * dt +
-          bounceHeight * Math.sin(time * bounceSpd),
-        -maxSpeed,
-        maxSpeed
-      )
-      xSet(pos.x)
-      ySet(pos.y)
-    })
+        pos.x += contain(
+          (mouse.x - pos.x - distance.x) * dt,
+          -maxSpeed,
+          maxSpeed
+        )
+        pos.y += contain(
+          (mouse.y - pos.y - distance.y) * dt +
+            bounceHeight * Math.sin(time * bounceSpd),
+          -maxSpeed,
+          maxSpeed
+        )
+        xSet(pos.x)
+        ySet(pos.y)
+      })
+    }
   },
 
   methods: {},
