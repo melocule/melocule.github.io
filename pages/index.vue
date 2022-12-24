@@ -1,5 +1,3 @@
 <template lang="pug">
-body.flex.flex-col.h-screen.w-screen
-  nav-bar
-  home-page
+home-page
 </template>
